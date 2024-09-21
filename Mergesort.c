@@ -14,7 +14,7 @@ int main()
 
     merge_sort(array, n);
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) // Output the sorted array
         printf("%d ", array[i]);
     printf("\n");
 
@@ -24,7 +24,7 @@ int main()
 
 
 
-void merge_sort(int *a, int n) // merge sort an array a with n elements 
+void merge_sort(int *a, int n) // Merge sort an array a with n elements 
 {
 
 
@@ -33,7 +33,7 @@ void merge_sort(int *a, int n) // merge sort an array a with n elements
 
 }
 
-void merge_recursion(int *a, int left, int right)
+void merge_recursion(int *a, int left, int right) // Recursion to split all elements in array
 {
 
     if (left < right)
@@ -51,47 +51,49 @@ void merge_recursion(int *a, int left, int right)
 void merge_arrays(int *a, int left, int middle, int right)
 {
 
-    int left_length = middle - left + 1; // Left portion of array
-    int right_length = right - middle; // Right portion of array
+    int left_length = middle - left + 1; // Calculate length of both arrays
+    int right_length = right - middle;
 
-    int *L = (int *)malloc(left_length * sizeof(int)); // Create memory block for left array
-    int *R = (int *)malloc(right_length * sizeof(int)); // Create memory block for right array
+    int *L = (int *)malloc(left_length * sizeof(int)); // Allocate memory blocks for both arrays
+    int *R = (int *)malloc(right_length * sizeof(int));
 
-    if (L == NULL || R == NULL) // If memory allocation failed
-    {
-        fprintf(stderr, "Memory allocation failed\n");
-        exit(EXIT_FAILURE);
-    }
-
-    // Add arrays to the memory blocks
-
-    for (int i = 0; i < left_length; i++)
-    {
+    for (int i = 0; i < left_length; i++) // Initialize new memory blocks with the 2 arrays
         L[i] = a[left + i];
-    }
     for (int j = 0; j < right_length; j++)
-    {
         R[j] = a[middle + 1 + j];
-    }
 
-
-    int i, j, k;
-
-    for (i = 0, j = 0, k = left; k <= right; k++)
+    int i = 0, j = 0, k = left; 
+    while (i < left_length && j < right_length) // Begin sorting both arrays using i, j, k to
+                                                // track position in the 2 arrays and original array
     {
-        if ((i < left_length) && (j >= right_length || left[&i] <= right[&j]))
+        if (L[i] <= R[j])
         {
             a[k] = L[i];
             i++;
-        } 
-        else 
+        }
+        else
         {
             a[k] = R[j];
             j++;
         }
-    } 
+        k++;
+    }
 
-    free(L);
+    while (i < left_length)
+    {
+        a[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < right_length)
+    {
+        a[k] = R[j];
+        j++;
+        k++;
+    }
+
+    free(L); // Clean up the memory after finished with calculation
     free(R);
 
 }
