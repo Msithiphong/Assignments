@@ -28,7 +28,7 @@ void merge_sort(int *a, int n) // merge sort an array a with n elements
 {
 
 
-    merge(a, 0, n - 1);
+    merge_recursion(a, 0, n - 1);
 
 
 }
@@ -71,7 +71,7 @@ void merge_arrays(int *a, int left, int middle, int right)
     }
     for (int j = 0; j < right_length; j++)
     {
-        R[j] = a[right + j];
+        R[j] = a[middle + 1 + j];
     }
 
 
@@ -91,5 +91,7 @@ void merge_arrays(int *a, int left, int middle, int right)
         }
     } 
 
+    free(L);
+    free(R);
 
 }
