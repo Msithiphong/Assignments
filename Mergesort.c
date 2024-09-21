@@ -54,10 +54,10 @@ void merge_arrays(int *a, int left, int middle, int right)
     int left_length = middle - left + 1; // Left portion of array
     int right_length = right - middle; // Right portion of array
 
-    int *left = (int *)malloc(left_length * sizeof(int)); // Create memory block for left array
-    int *right = (int *)malloc(right_length * sizeof(int)); // Create memory block for right array
+    int *L = (int *)malloc(left_length * sizeof(int)); // Create memory block for left array
+    int *R = (int *)malloc(right_length * sizeof(int)); // Create memory block for right array
 
-    if (left == NULL || right == NULL) // If memory allocation failed
+    if (L == NULL || R == NULL) // If memory allocation failed
     {
         fprintf(stderr, "Memory allocation failed\n");
         exit(EXIT_FAILURE);
@@ -67,11 +67,11 @@ void merge_arrays(int *a, int left, int middle, int right)
 
     for (int i = 0; i < left_length; i++)
     {
-        left[&i] = a[left + i];
+        L[i] = a[left + i];
     }
     for (int j = 0; j < right_length; j++)
     {
-        right[&j] = a[right + j];
+        R[j] = a[right + j];
     }
 
 
@@ -81,12 +81,12 @@ void merge_arrays(int *a, int left, int middle, int right)
     {
         if ((i < left_length) && (j >= right_length || left[&i] <= right[&j]))
         {
-            a[k] = left[&i];
+            a[k] = L[i];
             i++;
         } 
         else 
         {
-            a[k] = right[&j];
+            a[k] = R[j];
             j++;
         }
     } 
