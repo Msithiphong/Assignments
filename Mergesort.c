@@ -11,46 +11,57 @@ int main()
 {
     // Test case 1: Regular Case
     int array1[] = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-    int n = sizeof(array1) / 4;
-
-    merge_sort(array1, n);
+    int n1 = sizeof(array1) / 4;
+    merge_sort(array1, n1);
+    
     printf("Test case 1: ");
-
-    for (int i = 0; i < n; i++) // Output the sorted array
+    for (int i = 0; i < n1; i++) // Output the sorted array
         printf("%d ", array1[i]);
     printf("\n");
 
+
+
     // Test case 2: Single element array
-    int array2[] = { 5 };
+    int array2[] = { 40 };
     int n2 = sizeof(array2) / 4;
     merge_sort(array2, n2);
+
     printf("Test case 2: ");
     for (int i = 0; i < n2; i++)
         printf("%d ", array2[i]);
     printf("\n");
 
+
+
     // Test case 3: Already sorted array
-    int array3[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    int array3[] = { 10, 11, 12, 13, 15, 16, 20, 24 };
     int n3 = sizeof(array3) / 4;
     merge_sort(array3, n3);
+
     printf("Test case 3: ");
     for (int i = 0; i < n3; i++)
         printf("%d ", array3[i]);
     printf("\n");
 
+
+
     // Test case 4: Array with negative numbers
     int array4[] = { -22, -5, -39, -16, -8, -6, -1, -8, -9, -20 };
-    int n4= 10;
+    int n4 = sizeof(array4) / 4;
     merge_sort(array4, n4);
+
     printf("Test case 4: ");
     for (int i = 0; i < n4; i++)
         printf("%d ", array4[i]);
     printf("\n");
 
+
+
     // Test case 5: Null pointer
     int *array5 = NULL;
-    int n5 = 10;
+    int n5 = sizeof(array5) / 4;
     merge_sort(array5, n5);
+
     printf("Test case 5: Null pointer handled\n");
 
     return 0;
