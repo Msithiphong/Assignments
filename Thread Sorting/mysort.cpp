@@ -6,7 +6,10 @@
 using namespace std;
 
 void bubble(int A[], int size);
+void mergeAdjacent(int A[], int size);
 
+long long swapCount;
+long long allSwaps;
 
 int main(int argc, char* argv[])
     {
@@ -70,9 +73,11 @@ int main(int argc, char* argv[])
         t15.join();
         t16.join();
 
-        for (int i = 0; i < count; i++){
+        mergeAdjacent()
+
+        for (int i = 0; i < count; i++)
+        {
             fout << a[i] << endl;
-            
         }
 
        
@@ -81,21 +86,35 @@ int main(int argc, char* argv[])
         fin.close();
 
         cout << count << " numbers transferred from " << argv[1] << " to " << argv[2] << endl;
+
+        delete[] a;
     }
 
 
-void bubble(int A[], int size)
+void bubble(int A[], int start, int end)
     {
         mutex mtx;
         mtx.lock();
-        for (int i = 0; i < size - 1; i++)
-            for (int j = 0; j < size - i - 1; j++)
+        for (int i = start; i < end - 1; i++)
+            for (int j = start; j < end - i - 1; j++)
             {
                 if (A[j] > A[j + 1])
                     swap(A[j], A[j + 1]);
+                    swapCount++;
+                    allSwaps++;
             }
         mtx.unlock();
     }
 
 
-void mergeAdjacent()
+void mergeAdjacent(int A[], int start, int end)
+{
+    int mergeCount = 0;
+    int* a1 = new int[62500];
+    int* a2 = new int[62500];
+
+    while (mergeCount < 16)
+    {
+
+    }
+}
