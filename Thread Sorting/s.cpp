@@ -7,8 +7,11 @@
 using namespace std;
 
 void bubble(int A[], int size);
+void merge();
 
 mutex mtx;
+
+// IMPLEMENT GLOBAL VARIABLES
 long long swapCount = 0;
 long long allSwaps = 0;
 
@@ -110,3 +113,5 @@ void bubble(int A[], int size)
        
     }
 
+// IMPLEMENT MERGE
+void merge();
