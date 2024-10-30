@@ -7,7 +7,7 @@
 using namespace std;
 
 void bubble(int A[], int size);
-void merge();
+void merge(int A[], int B[], int size);
 
 mutex mtx;
 
@@ -114,4 +114,9 @@ void bubble(int A[], int size)
     }
 
 // IMPLEMENT MERGE
-void merge();
+void merge(int A[], int B[], int size)
+{
+    if (A < B) {
+        
+    }
+}
