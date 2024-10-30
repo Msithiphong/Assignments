@@ -7,7 +7,7 @@
 using namespace std;
 
 void bubble(int A[], int size);
-void merge(int A[], int B[], int size);
+void merge(int A[], int B[], int size, int list);
 
 mutex mtx;
 
@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
         {
             section = count / 16;
         } else {
-            section = 48 / 16;
+            section = 10000 / 16;
         }
 
         
@@ -81,10 +81,26 @@ int main(int argc, char* argv[])
         t15.join();
         t16.join();
 
+        int* mergedList = new int[section * 2];
         
+        for (int i = 0; i < 8; i++){
+            int j = 0;
+            merge(a + (j * section), a + ((1 + j) * section), section, *mergedList);
+            j += 2;
+        }
+
+        for (int i = 0; i < 4; i++) {
+            int j = 0;
+            merge(a + (j * section), a + ((2 + j) * section), section * 2, *mergedList);
+        }
+        for (int i = 0; i < 2; i++) {
+            int j = 0;
+            merge(a + (j * section), a + ((4 + j) * section), section * 4, *mergedList);
+        }
+        merge(a, a + (8 * section), section * 8, *mergedList);
         
         for (int i = 0; i < count; i++){
-            fout << a[i] << endl;
+            fout << mergedList[i] << endl;
         }
 
        
@@ -92,6 +108,7 @@ int main(int argc, char* argv[])
         fout.close();
         fin.close();
         delete[] a;
+        delete[] mergedList;
 
         cout << count << " numbers transferred from " << argv[1] << " to " << argv[2] << endl;
         return 0;
@@ -114,9 +131,26 @@ void bubble(int A[], int size)
     }
 
 // IMPLEMENT MERGE
-void merge(int A[], int B[], int size)
+void merge(int a[], int b[], int size, int* list)
 {
-    if (A < B) {
+    int* i = a;
+    int* last1 = a + size;
+    int* j = b;
+    int* last2 = b + size;
+    
+    while (i != last1 && j != last2) { 
+        if (*i < *j) { 
+            *list++ = *i++; 
+        } else { 
+            *list++ = *j++; 
+        } 
+    } 
         
+    while (i != last1) { 
+        *list++ = *i++; 
+    } 
+    while (j != last2) {
+        *list++ = *b++; 
     }
+    
 }
