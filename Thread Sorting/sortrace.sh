@@ -7,32 +7,7 @@
 ############################################################
 echo "=======Start======="
 whoami
-Sorted
-Section 1
-Sorted
-Section 2
-Sorted
-section 3
-Sorted
-section 4
-Sorted
-section 5
-Sorted
-section 6
-Sorted
-section 7
-Sorted
-section 8
-Sorted sections
-1&2
-Sorted sections
-3&4
-Sorted sections
-5&6
-Sorted sections
-7&8
-Sorted Sections 1&2&3&4 Sorted Sections 5&6&7&8
-Internaldate
+date
 echo My machine has this many processors
 nproc # this is for Windows machines
 echo Generating 1000000 random numbers
@@ -41,11 +16,11 @@ sleep 1
 sleep 1
 echo Starting system sort
 sleep 1
-{ time sort -n numbers.dat > systemsort.out; } 2>> sortrace.log # this line is for Windows
+{ time sort -n numbers.dat > systemsort.out; } 2>&1 | tee -a sortrace.log
 sleep 1
 echo Starting my sort
 sleep 1
-{ time ./mysort numbers.dat mysort.out; } 2>> sortrace.log # this line is for Windows
+{ time ./mysort numbers.dat mysort.out; } 2>&1 | tee -a sortrace.log
 sleep 1
 ls -l systemsort.out
 ls -l mysort.out

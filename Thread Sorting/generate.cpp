@@ -27,11 +27,6 @@ int main(int argc, char *argv[])
         exit(EXIT_SUCCESS);
     }
 
-    for (int i = 0; i < argc; i++)
-    {
-        cout << "argv["<<i<<"]:" << argv[i] << endl;
-    }
-
     int COUNT = stoi(argv[1]);
     int MIN = stoi(argv[2]);
     int MAX = stoi(argv[3]);
