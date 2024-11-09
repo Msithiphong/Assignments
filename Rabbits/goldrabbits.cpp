@@ -1,8 +1,17 @@
+// Name: Maxwell Sithiphong
+// Class (CECS 325-02)
+// Project Name (Prog 5 – Gold Rabbits)
+// Due Date (11/12/2024)
+//
+// I certify that this program is my own original work. I did not copy any part of this program from
+// any other source. I further certify that I typed each and every line of code in this program.
+
 #include <iostream>
 #include <time.h>
 #include <iomanip>
 #include <limits>
 #include <map>
+#include <string>
 using namespace std;
 
 
@@ -24,6 +33,7 @@ int main()
         try {
             cout << setw(11) << goldRabbits(i, key) << "   " << "functionCalls: " << setw(4) << fiboCount << endl; // the call to goldRabbits
         } catch(const overflow_error& e) {
+            cout << endl << "Overflow at fibo(" << e.what() << ")" << endl;
             goldRabbits(-1, key);
             return 0;
         }
@@ -36,7 +46,6 @@ int goldRabbits(int n, int key)
     static map<int,int> fiboMap;
     fiboCount++;
     if (n == -1) {
-        cout << endl << "Overflow at fibo(" << key << ")" << endl;
         cout << "Fibo Map" << endl << "------------" << endl;
         map<int,int>::iterator it = fiboMap.begin();
         while (it != fiboMap.end()){
@@ -53,7 +62,7 @@ int goldRabbits(int n, int key)
         fiboMap[key] = fiboMap[key - 1] + fiboMap[key - 2];
         if (fiboMap[key] < 0) {
             fiboMap.erase(key);
-            throw overflow_error("Integer Overflow");
+            throw overflow_error(to_string(key));
         }
         return fiboMap[key];     
     }
