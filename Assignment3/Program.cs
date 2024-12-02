@@ -1,8 +1,11 @@
-// Program.cs
-//
-// CECS 342 Assignment 3
-// File Type Report
-// Solution Template
+// 
+// Assignment 3 - Group 21
+// CECS 342-02
+// December 1, 2024
+
+// Tools Used: Sanfoundry, w3resource, qawithexperts, 
+// Microsoft Learn, C# Tutorial, C# Corner, csharptutorial.net, tutorialspoint.com
+// WAwithExperts.com, Discord, .NET, W3Schools.com
 
 using System;
 using System.Collections.Generic;
@@ -45,7 +48,12 @@ namespace FileTypeReport {
       // 2. Process data
       var query =
         from file in files
-        // TODO: Fill in your code here.
+
+        let extension = Path.GetExtension(file).ToLower() 
+        group file by extension into fileGroup 
+        let totalSize = fileGroup.Sum(file => new FileInfo(file).Length) 
+        orderby totalSize
+
         select new {
           Type = fileGroup.Key, // file extension
           Count = fileGroup.Count(),
@@ -56,7 +64,13 @@ namespace FileTypeReport {
       var alignment = new XAttribute("align", "right");
       var style = "table, th, td { border: 1px solid black; }";
 
-      var tableRows = // TODO: Fill in your code here.
+      var tableRows = query.Select(data =>
+        new XElement("tr",
+            new XElement("td", data.Type),
+            new XElement("td", data.Count, alignment),
+            new XElement("td", FormatByteSize(data.TotalSize), alignment)
+        )
+      );
         
       var table = new XElement("table",
         new XElement("thead",
