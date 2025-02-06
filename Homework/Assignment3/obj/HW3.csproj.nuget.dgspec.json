@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Git\\C\\Assignment3\\HW3.csproj": {}
+    "C:\\Git\\C\\Homework\\Assignment3\\HW3.csproj": {}
   },
   "projects": {
-    "C:\\Git\\C\\Assignment3\\HW3.csproj": {
+    "C:\\Git\\C\\Homework\\Assignment3\\HW3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Git\\C\\Assignment3\\HW3.csproj",
+        "projectUniqueName": "C:\\Git\\C\\Homework\\Assignment3\\HW3.csproj",
         "projectName": "HW3",
-        "projectPath": "C:\\Git\\C\\Assignment3\\HW3.csproj",
+        "projectPath": "C:\\Git\\C\\Homework\\Assignment3\\HW3.csproj",
         "packagesPath": "C:\\Users\\csith\\.nuget\\packages\\",
-        "outputPath": "C:\\Git\\C\\Assignment3\\obj\\",
+        "outputPath": "C:\\Git\\C\\Homework\\Assignment3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\csith\\AppData\\Roaming\\NuGet\\NuGet.Config"
