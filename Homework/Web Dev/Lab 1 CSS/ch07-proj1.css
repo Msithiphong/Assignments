@@ -1,0 +1,147 @@
+:root {
+    --color-primary: #ff6e40;
+    --color-back-light: #ECEFF1;
+    --color-back-dark: #37474f;
+    --spacer-base: 1em;
+    --card-font-size: 90%;
+    --header-font-size: 32px;
+    --header-height: 8em;
+}
+body {
+    font-family:   Roboto, Arial, sans-serif;
+    font-size: 1em;
+    background-color: var(--color-back-light);
+}
+header {
+   padding: 0 var(--spacer-base);
+   background-color: var(--color-back-dark);
+   height: var(--header-height);
+
+}
+header h1 {
+    margin: 0;   
+    font-size: var(--header-font-size);
+    color: white;
+}
+header h1 span {
+    color: var(--color-primary);
+}
+figure {
+    margin: 0;
+    padding: 0;
+}
+button {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+.card {
+	background: white;
+	margin-bottom: 2em;	
+    padding: 0;
+}
+.card-content p {
+	padding: 0.5em 1.4em 0 1.4em;
+	font-size: var(--card-font-size);   
+}
+.card-actions {
+	padding: 0.5em 1.4em;
+	font-size: var(--card-font-size);      
+}
+
+/* uses flex display for the logo and nav bar
+to put them on left and right sides of the header 
+then center them in the middle */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* centers horizontal and vertical*/
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* makes card width 24% out of 100*/
+.card {
+    width: 24%;
+}
+
+/* display flex to put in a row
+wraps cards for different widths 
+and spaces them even from each other*/
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* make sure img stays in container*/
+img {
+    max-width: 100%;
+}
+
+/* color saturation on hover*/
+.card img:hover {
+    filter: saturate(150%);
+}
+
+/* shadow behind the card when hover*/
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* button is invisible at first then 
+transitions in when hovered over*/
+.card button {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/* shows the button when it is hovered over*/
+.card:hover button {
+    opacity: 1;
+}
+
+
+
+
+
+
+/* styles for mobile protrait screen */
+/* decreases header font size and height then increases the font size
+lastly let the cards be the full width of the mobile screen*/
+@media only screen and (max-width: 480px) {
+    :root {
+        --header-font-size: 24px;
+        --header-height: 4em;
+        --card-font-size: 100%;
+    }
+    .card {
+        width: 100%;
+    }
+}
+
+
+/* styles for tablet portrait and mobile landscape screens */
+/* decrease header height and increase font size
+let cards be 45% of width on tablet*/
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    :root {
+        --header-height: 5em;
+        --card-font-size: 100%;
+    }
+    .card {
+        width: 45%;
+    }
+}
+
+
